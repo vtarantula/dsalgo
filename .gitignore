@@ -1,0 +1,8 @@
+./cpptest
+./Makefile~
+./src/*.o
+./src/*.~
+src/main.o
+src/main.cpp~
+Makefile~
+dsalgo
