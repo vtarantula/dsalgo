@@ -31,9 +31,9 @@ void _merge(std::vector<int>& v_nums, long unsigned int p, long unsigned int q, 
     if (r <= p)
         return;
     std::vector<int> v_left, v_right;
-    for (long unsigned int i = 0; i < q - p; ++i)
+    for (long unsigned int i = 0; i <= q - p; ++i)
         v_left.push_back(v_nums.at(p + i));
-    for (long unsigned int i = 0; i < r - q; ++i)
+    for (long unsigned int i = 1; i <= r - q; ++i)
         v_right.push_back(v_nums.at(q + i));
     unsigned int i = 0, j = 0, k = p;
     while (i < v_left.size() && j < v_right.size())
@@ -60,6 +60,25 @@ void _merge(std::vector<int>& v_nums, long unsigned int p, long unsigned int q, 
         ++j;
         ++k;
     }
+    return;
+}
+
+void _merge_sort(std::vector<int>& v_nums, long unsigned int p, long unsigned int r)
+{
+    if (p >= r)
+        return;
+    long unsigned int q = r / 2;
+    _merge_sort(v_nums, p, q);
+    _merge_sort(v_nums, q, r);
+    _merge(v_nums, p, q, r);
+    return;
+}
+
+void merge_sort(std::vector<int>& v_nums)
+{
+    if (v_nums.empty() || v_nums.size() == 1)
+        return;
+    _merge_sort(v_nums, 0, v_nums.size() - 1);
     return;
 }
 
