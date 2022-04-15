@@ -88,4 +88,31 @@ void merge_sort(std::vector<T>& v_nums)
     return;
 }
 
+template <typename T>
+int binary_search(std::vector<T>& v_nums, int target)
+{
+    int i_ans = -1;
+    if (v_nums.empty())
+        return i_ans;
+    long unsigned int left = 0, mid  = v_nums.size() / 2, right = v_nums.size() - 1;
+    while (mid >= 0 && mid < v_nums.size())
+    {
+        if (v_nums.at(mid) == target)
+        {
+            i_ans = mid;
+            break;
+        } 
+        if (mid == 0)
+            return i_ans;
+        if (v_nums.at(mid) > target)
+        {
+            right = mid;
+        } else {
+            left = mid;
+        }
+        mid = (left + right + 1) / 2;
+    }
+    return i_ans;
+}
+
 #endif  // __MYALGO_H__

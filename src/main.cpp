@@ -26,10 +26,11 @@ int main(int argc, char const *argv[])
     // std::cout << x << std::endl;
     // printf ("Size: %Lf\n", x);
 
-    std::vector<int> v_nums = {5,4,3,2,1};
+    std::vector<int> v_nums = {3, 9, 26, 38, 49, 57};
     merge_sort(v_nums);
-    for (auto& i : v_nums)
-        std::cout << i << " ";
+    auto ans = binary_search(v_nums, 3);
+    // for (auto& i : v_nums)
+        std::cout << ans << " ";
     std::cout << std::endl;
 
     printf ("*** Ending application ***\n");
