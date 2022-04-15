@@ -26,55 +26,61 @@ void insertion_sort(std::vector<T>& v_nums, const bool is_decreasing=false)
     return;
 }
 
-void _merge(std::vector<int>& v_nums, long unsigned int p, long unsigned int q, long unsigned int r)
+template <typename T>
+void _merge(std::vector<T>& v_nums, long unsigned int p, long unsigned int q, long unsigned int r)
 {
-    if (r <= p)
+    if (r < p)
         return;
+
+    auto n1 = q - p + 1, n2 = r - q;
     std::vector<int> v_left, v_right;
-    for (long unsigned int i = 0; i <= q - p; ++i)
+    v_left.reserve(n1), v_right.reserve(n2);
+
+    for (long unsigned int i = 0; i < n1; ++i)
         v_left.push_back(v_nums.at(p + i));
-    for (long unsigned int i = 1; i <= r - q; ++i)
-        v_right.push_back(v_nums.at(q + i));
-    unsigned int i = 0, j = 0, k = p;
+    for (long unsigned int i = 0; i < n2; ++i)
+        v_right.push_back(v_nums.at(q + i + 1));
+    
+    unsigned int i = 0, j = 0;
     while (i < v_left.size() && j < v_right.size())
     {
         if (v_left.at(i) < v_right.at(j))
         {
-            v_nums.at(k) = v_left.at(i);
+            v_nums.at(p + i + j) = v_left.at(i);
             ++i;
         } else {
-            v_nums.at(k) = v_right.at(j);
+            v_nums.at(p + i + j) = v_right.at(j);
             ++j;
         }
-        ++k;
     }
     while (i < v_left.size())
     {
-        v_nums.at(k) = v_left.at(i);
-        ++k;
+        v_nums.at(p + i + j) = v_left.at(i);
         ++i;
     }
     while (j < v_right.size())
     {
-        v_nums.at(k) = v_right.at(j);
+        v_nums.at(p + i + j) = v_right.at(j);
         ++j;
-        ++k;
     }
     return;
 }
 
-void _merge_sort(std::vector<int>& v_nums, long unsigned int p, long unsigned int r)
+template <typename T>
+void _merge_sort(std::vector<T>& v_nums, long unsigned int p, long unsigned int r)
 {
     if (p >= r)
         return;
-    long unsigned int q = r / 2;
+    
+    long unsigned int q = (p + r) / 2;
     _merge_sort(v_nums, p, q);
-    _merge_sort(v_nums, q, r);
+    _merge_sort(v_nums, q + 1, r);
     _merge(v_nums, p, q, r);
     return;
 }
 
-void merge_sort(std::vector<int>& v_nums)
+template <typename T>
+void merge_sort(std::vector<T>& v_nums)
 {
     if (v_nums.empty() || v_nums.size() == 1)
         return;

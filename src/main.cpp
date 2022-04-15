@@ -26,7 +26,7 @@ int main(int argc, char const *argv[])
     // std::cout << x << std::endl;
     // printf ("Size: %Lf\n", x);
 
-    std::vector<int> v_nums = {3, 2};
+    std::vector<int> v_nums = {5,4,3,2,1};
     merge_sort(v_nums);
     for (auto& i : v_nums)
         std::cout << i << " ";
