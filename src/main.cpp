@@ -28,7 +28,7 @@ int main(int argc, char const *argv[])
 
     std::vector<int> v_nums = {3, 9, 26, 38, 49, 57};
     merge_sort(v_nums);
-    auto ans = binary_search(v_nums, 3);
+    auto ans = binary_search(v_nums, 57);
     // for (auto& i : v_nums)
         std::cout << ans << " ";
     std::cout << std::endl;

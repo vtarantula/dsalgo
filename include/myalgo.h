@@ -72,10 +72,10 @@ void _merge_sort(std::vector<T>& v_nums, long unsigned int p, long unsigned int 
     if (p >= r)
         return;
     
-    long unsigned int q = (p + r) / 2;
-    _merge_sort(v_nums, p, q);
-    _merge_sort(v_nums, q + 1, r);
-    _merge(v_nums, p, q, r);
+    long unsigned int mid = (p + r) / 2;
+    _merge_sort(v_nums, p, mid);
+    _merge_sort(v_nums, mid + 1, r);
+    _merge(v_nums, p, mid, r);
     return;
 }
 
@@ -88,29 +88,30 @@ void merge_sort(std::vector<T>& v_nums)
     return;
 }
 
+// Iterative Binary Search algorithm
 template <typename T>
-int binary_search(std::vector<T>& v_nums, int target)
+int binary_search(const std::vector<T>& v_nums, const T& target)
 {
     int i_ans = -1;
     if (v_nums.empty())
         return i_ans;
     long unsigned int left = 0, mid  = v_nums.size() / 2, right = v_nums.size() - 1;
-    while (mid >= 0 && mid < v_nums.size())
+    while (left <= right)
     {
         if (v_nums.at(mid) == target)
         {
             i_ans = mid;
             break;
         } 
-        if (mid == 0)
+        if (mid == 0 || mid == v_nums.size() - 1)
             return i_ans;
         if (v_nums.at(mid) > target)
         {
-            right = mid;
+            right = mid - 1;
         } else {
-            left = mid;
+            left = mid + 1;
         }
-        mid = (left + right + 1) / 2;
+        mid = (left + right) / 2;
     }
     return i_ans;
 }
