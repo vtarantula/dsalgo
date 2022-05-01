@@ -4,7 +4,7 @@
 #include <vector>
 
 template <typename T>
-void insertion_sort(std::vector<T>& v_nums, const bool is_decreasing=false)
+void insertion_sort(std::vector<T>& v_nums, const bool& is_decreasing=false)
 {
     for (long unsigned int i = 1; i < v_nums.size(); ++i)
     {
@@ -33,7 +33,7 @@ void _merge(std::vector<T>& v_nums, long unsigned int p, long unsigned int q, lo
         return;
 
     auto n1 = q - p + 1, n2 = r - q;
-    std::vector<int> v_left, v_right;
+    std::vector<T> v_left, v_right;
     v_left.reserve(n1), v_right.reserve(n2);
 
     for (long unsigned int i = 0; i < n1; ++i)

@@ -9,11 +9,11 @@ int main(int argc, char const *argv[])
 {
     /* code */
     printf ("Starting application...\n");
-    // std::vector<double> v_nums = {31.5, 41.2, 59, 26, 41.1, 58};
-    // insertion_sort(v_nums);
-    // for (auto& i : v_nums)
-    //     std::cout << i << " ";
-    // std::cout << std::endl;
+    std::vector<double> v_nums = {31.5, 41.2, 59, 26, 41.1, 58};
+    merge_sort(v_nums);
+    for (auto& i : v_nums)
+        std::cout << i << " ";
+    std::cout << std::endl;
 
     // Test division by zero
     // unsigned long long x = 0.0;
@@ -26,12 +26,12 @@ int main(int argc, char const *argv[])
     // std::cout << x << std::endl;
     // printf ("Size: %Lf\n", x);
 
-    std::vector<int> v_nums = {3, 9, 26, 38, 49, 57};
-    merge_sort(v_nums);
-    auto ans = binary_search(v_nums, 57);
-    // for (auto& i : v_nums)
-        std::cout << ans << " ";
-    std::cout << std::endl;
+    // std::vector<int> v_nums = {3, 9, 26, 38, 49, 57};
+    // merge_sort(v_nums);
+    // auto ans = binary_search(v_nums, 57);
+    // // for (auto& i : v_nums)
+    //     std::cout << ans << " ";
+    // std::cout << std::endl;
 
     printf ("*** Ending application ***\n");
     return 0;
